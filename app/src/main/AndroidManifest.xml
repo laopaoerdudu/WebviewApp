@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wwe">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WebviewActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Scheme 协议是支持冷启动拉起 App 的，为了保证与点击 Launcher 冷启动的体验相同（如 windowBackground 占位图），需要用到 SplashActivity 的主题。 -->
+        <!-- android:theme="@style/SplashTheme" -->
+        <activity
+            android:name=".ProxyActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <!-- 注意：path 必须有 / 前缀 -->
+                <data
+                    android:scheme="xiaopeng"
+                    android:path="/goodsId" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
